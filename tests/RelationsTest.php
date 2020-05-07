@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Database\Eloquent\Collection;
@@ -337,8 +338,6 @@ class RelationsTest extends TestCase
         $this->assertArrayHasKey('groups', $user->getAttributes());
 
         // Assert they are attached
-        $this->assertContains($group->_id, $user->groups->pluck('_id')->toArray());
-        $this->assertContains($user->_id, $group->users->pluck('_id')->toArray());
         $this->assertEquals($group->_id, $user->groups()->first()->_id);
         $this->assertEquals($user->_id, $group->users()->first()->_id);
     }

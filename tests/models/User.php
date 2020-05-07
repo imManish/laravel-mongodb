@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Auth\Authenticatable;
@@ -10,7 +11,7 @@ use Jenssegers\Mongodb\Eloquent\HybridRelations;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 /**
- * Class User
+ * Class User.
  * @property string $_id
  * @property string $name
  * @property string $title
@@ -65,16 +66,6 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
     public function photos()
     {
         return $this->morphMany('Photo', 'imageable');
-    }
-
-    public function addresses()
-    {
-        return $this->embedsMany('Address');
-    }
-
-    public function father()
-    {
-        return $this->embedsOne('User');
     }
 
     public function getDateFormat()
